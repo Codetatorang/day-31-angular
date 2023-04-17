@@ -1,1 +1,19 @@
-<h1>hello, world</h1>
+<h1>hello, world ({{ value }})</h1>
+<app-counter [counter]="10" (onValueChanged)="valueChanged($event)"></app-counter>
+<ul *ngIf="historicalvalue.length > 0; else noData">
+    <li *ngFor="let i of historicalvalue; let idx = index">
+        <h3><code>{{ idx+1 }}</code>. {{ i }}
+        <button (click)="deleteValue(idx)">x</button>
+        </h3>
+    </li>
+</ul>
+
+<ng-template #noData>
+    <h2>No Data</h2>
+</ng-template>
+<!-- 
+<app-my-component></app-my-component>
+<app-my-component title="{{ title }}"></app-my-component>
+<app-my-component [title]="title" imageUrl="/assets/eevee.jpg"></app-my-component> 
+-->
+
